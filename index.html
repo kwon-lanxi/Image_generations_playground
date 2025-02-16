@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Image generator</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
+</head>
+<body>
+    <h1>Image generator</h1>
+    <spand id="image-preview-contenedor"><image id="image-preview" src="" href="" alt="prevista de tamaño de la imagen"></spand>
+
+    <section class="contenedor">
+    <div class="endpoint-class">
+    <h2>OpenAi Endpoint</h2>
+    <input type="text" id="endpoint" placeholder="https://api.openai.com/v1">
+    </div>
+    <div class="key-class">
+    <h2>API Key</h2>
+    <input type="text" id="key" placeholder="api-key">
+    </div>
+    </section>
+    
+    <section class="detalles">
+    <h2>Model</h2>
+    <input type="text" id="model" placeholder="dalle-3">
+
+    <section class="tamaño">
+    <div class="height">
+    <h3>Height</h4>
+    <input type="number" id="height" value="1024">
+    </div>
+    <div class="width">
+    <h3>Width</h4>
+    <input type="number" id="width" value="1024">
+    </div>
+    </section>
+
+    <h2>Prompt</h2>
+    <input type="text" id="prompt" value="a cute orange kitten sunbathing">
+    </section>
+
+    <section class="botones">
+    <button id="generate">Generate</button>
+    <button id="download" href="">Download</button>
+    </section>
+</body>
+<script type="module" src='index.js'></script>
+</html>
