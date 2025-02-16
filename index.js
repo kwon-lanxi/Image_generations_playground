@@ -56,7 +56,7 @@ generar.addEventListener("click", async (e) => {
             // Éxito en la generación
             imagePreview.src = data.data[0].url;
             download.href = data.data[0].url;
-            download.download = `imagen-generada-${time}.png`;
+            //download.download = `imagen-generada-${time}.png`;
             download.textContent = "Descargar";
         } else {
             // Manejo específico de errores de la API
