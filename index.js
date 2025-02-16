@@ -90,9 +90,12 @@ generar.addEventListener("click", async (e) => {
 });
 
 function descargarImagen() {
-    const imagePreview = document.getElementById("imagePreview"); 
-    const time = new Date().getTime();
+    if (!imagePreview.src || imagePreview.src === '') {
+        alert("No hay imagen para descargar.");
+        return;
+    }
 
+    const time = new Date().getTime();
     fetch(imagePreview.src)
         .then(response => response.blob())
         .then(blob => {
@@ -105,5 +108,10 @@ function descargarImagen() {
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
         })
-        .catch(error => console.error("Error al descargar la imagen:", error));
+        .catch(error => {
+            console.error("Error al descargar la imagen:", error);
+            alert("Hubo un error al descargar la imagen. Por favor, intenta de nuevo.");
+        });
 }
+
+download.addEventListener('click', descargarImagen);
