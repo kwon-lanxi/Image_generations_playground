@@ -10,7 +10,7 @@ const generar = document.getElementById("generate");
 const download = document.getElementById("download");
 
 const imagePreview = document.getElementById("image-preview");
-const form = document.getElementById("image-form");
+
 
 /*---------- Prewiew ------------*/
 function TamañoPreview() {
@@ -54,7 +54,6 @@ generar.addEventListener("click", async (e) => {
 
         if (response.ok) {
             // Éxito en la generación
-            const time = new Date().getTime();
             imagePreview.src = data.data[0].url;
             download.href = data.data[0].url;
             download.download = `imagen-generada-${time}.png`;
@@ -89,3 +88,22 @@ generar.addEventListener("click", async (e) => {
         generar.textContent = "Generar";
     }
 });
+
+function descargarImagen() {
+    const imagePreview = document.getElementById("imagePreview"); 
+    const time = new Date().getTime();
+
+    fetch(imagePreview.src)
+        .then(response => response.blob())
+        .then(blob => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `imagen-generada-${time}.png`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        })
+        .catch(error => console.error("Error al descargar la imagen:", error));
+}
